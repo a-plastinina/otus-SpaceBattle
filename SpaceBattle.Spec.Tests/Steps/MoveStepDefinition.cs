@@ -1,7 +1,5 @@
-using System;
 using TechTalk.SpecFlow;
 using FluentAssertions;
-using Xunit;
 using Moq;
 using SpaceBattle;
 using SpaceBattle.Interface;
@@ -48,22 +46,21 @@ namespace SpeceBattle.Spec.Test.Steps
         [Given(@"позиция объекта null")]
         public void GivenPositionNull()
         {
-            Vector position = null;
-            mockAdapter.SetupGet<Vector>(m => m.Position).Returns(position);
+
+            mockAdapter.SetupGet<Vector>(m => m.Position).Throws<Exception>().Verifiable();
         }
 
         [When(@"движение не удалось")]
         public void WhenMoveFail()
         {
             Action act = () => new MoveCommand(mockAdapter.Object).Execute();
-            act.Should().Throw<NullReferenceException>();
+            act.Should().Throw<Exception>();
         }
 
         [Given(@"скорость объекта null")]
         public void AndVelocityNull()
         {
-            Vector velocity = null;
-            mockAdapter.SetupGet<Vector>(m => m.Position).Returns(velocity);
+            mockAdapter.SetupGet<Vector>(m => m.Position).Throws<Exception>().Verifiable();
         }
 
         [Then(@"свойство позиция НЕ изменено")]

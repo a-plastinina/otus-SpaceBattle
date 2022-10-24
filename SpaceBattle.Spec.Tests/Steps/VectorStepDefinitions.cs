@@ -9,8 +9,7 @@ namespace SpaceBattle.Spec.Tests
     public class VectorStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
-        private Vector p1;
-        private Vector p2;
+        private Vector? p1;
 
         public VectorStepDefinitions(ScenarioContext scenarioContext)
         {

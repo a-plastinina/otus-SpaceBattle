@@ -1,6 +1,7 @@
+using System;
 using SpaceBattle.Interface;
 
-namespace SpaceBattle.App
+namespace SpaceBattle
 {
     public class RotateCommand
     {
@@ -11,6 +12,7 @@ namespace SpaceBattle.App
         }
         public void Execute()
         {
+            if (_rotable.DirectionsNumber == 0) throw new DivideByZeroException("Не задано макс количество положений для поворота");
             _rotable.Direction = (_rotable.Direction + _rotable.AngularVelocity) % _rotable.DirectionsNumber;
         }
     }

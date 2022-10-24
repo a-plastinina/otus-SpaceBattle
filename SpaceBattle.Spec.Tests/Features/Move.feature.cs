@@ -91,7 +91,7 @@ namespace SpaceBattle.Spec.Tests.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Успешное перемещение", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
-this.ScenarioInitialize(scenarioInfo);
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -101,16 +101,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-    testRunner.When("выполнить команду движения", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("выполнить команду движения", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-    testRunner.Then("свойство позиция будет равно 5,8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.Then("свойство позиция будет равно 5,8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -127,7 +127,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Неизвестно местоположение", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
-this.ScenarioInitialize(scenarioInfo);
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -137,13 +137,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 14
-    testRunner.Given("позиция объекта null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("позиция объекта null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
-    testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 16
-    testRunner.When("движение не удалось", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("движение не удалось", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -160,7 +160,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Неизвестна скорость", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 19
-this.ScenarioInitialize(scenarioInfo);
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -170,13 +170,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 20
-    testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
-    testRunner.And("скорость объекта null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("скорость объекта null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
-    testRunner.When("движение не удалось", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("движение не удалось", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -193,7 +193,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Не изменяется позиция", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 25
-this.ScenarioInitialize(scenarioInfo);
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -203,16 +203,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 26
-    testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("объект имеет позицию 12,5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
-    testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("скорость -7,3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
-    testRunner.When("выполнить команду движения", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("выполнить команду движения", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 29
-    testRunner.Then("свойство позиция НЕ изменено", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.Then("свойство позиция НЕ изменено", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
