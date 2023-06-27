@@ -22,7 +22,8 @@ namespace SpaceBattle.Spec.Tests.Steps
         [Given("создать объект IMovable")]
         public void CreateMovableObject()
         {
-            mock.SetupGet(x => x.movable).Returns(It.IsAny<IMovable>());
+            mock.SetupGet(x => x.movable).Returns(new MovableAdapter(It.IsAny<IUniversalObject>()));
+            mock.Setup(x => x.ChangeVelocity(It.IsAny<Vector>()));
         }
 
         [Given("установить направление (.*), угловую скорость (.*) и количество секторов (.*)")]
@@ -30,15 +31,13 @@ namespace SpaceBattle.Spec.Tests.Steps
         {
             mock.SetupGet(x => x.Direction).Returns(d);
             mock.SetupGet(x => x.AngularVelocity).Returns(av);
-            mock.SetupGet(x => x.DirectionsNumber).Returns(n);
+            mock.SetupGet(x => x.DirectionsNumber).Returns(n);           
         }
 
-        [Given("создать объект с направлением (.*), угловую скорость (.*) и количество секторов (.*)")]
-        public void CreateRotateObject(int d, int av, int n)
+        [Given("создать объект IRotableForMove")]
+        public void CreateRotateObject()
         {
-            mock.SetupGet(x => x.Direction).Returns(d);
-            mock.SetupGet(x => x.AngularVelocity).Returns(av);
-            mock.SetupGet(x => x.DirectionsNumber).Returns(n);
+            mock.Setup(x => x.ChangeVelocity(It.IsAny<Vector>()));
         }
 
         [When("выполнить MacroRotateCommand")]
@@ -50,8 +49,9 @@ namespace SpaceBattle.Spec.Tests.Steps
         [Then("мгновенная скорость изменена")]
         public void SuccessChangeVelocity()
         {
+            mock.Object.movable.Should().NotBe(null);
             macroExecuting.Should().NotThrow<CommandException>();
-            mock.Verify(m => m.ChangeVelocity(It.IsAny<Vector>()), Times.Never);
+            mock.Verify(m => m.ChangeVelocity(It.IsAny<Vector>()), Times.Once);
         }
 
         [Then("мгновенная скорость не изменялась")]
