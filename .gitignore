@@ -2,3 +2,7 @@
 *.pdf
 \bin
 \obj
+\.idea
+\.vscode
+*.xml
+*.user

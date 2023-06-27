@@ -1,63 +1,69 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using SpaceBattle.Interface;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SpaceBattle
 {
-
-
     internal class Program
     {
-        static IMovable CreateObject()
-        {
-            return new MovableAdapter(
-                new Ship(null, new Vector(1, 3), 3, 8)
-            );
-        }
         private static void Main(string[] args)
         {
-            var moveAdapter = CreateObject();
-            Console.WriteLine($"start: {moveAdapter}");
+            var ioc = new IoC();
+            /*RegisteredDependency<Vector> a = (args) => new Vector(12, 5);
+            var v = a();
+            Console.WriteLine(v);
 
-            const int length = 5;
-            var queue = new Queue<ICommand>(length);
+            Console.WriteLine("register Vector");
+            ioc.Resolve<Vector>("IoC.Register", "Vector", (args) => new Vector((int)args[0], (int)args[1])).Execute();
 
-            for (int i = 0; i < 3; i++)
+            Console.WriteLine("get Vector");
+            var v2 = ioc.Resolve<Vector>("Vector", 10, 5);            
+            Console.WriteLine(v2);*/
+
+            /*ioc.Resolve<ScopeNewCommand>("IoC.Register", "Scopes.New", (args) => new ScopeNewCommand((int)args[0])).Execute();
+
+            ioc.Resolve<ICommand>(
+                "Scopes.New", 
+                new ThreadLocal<int>(() => {
+                    return Thread.CurrentThread.ManagedThreadId;
+                    })
+                );*/
+
+            ThreadLocal<Hashtable> ThreadName = new ThreadLocal<Hashtable>(() =>
             {
-                queue.Enqueue(new MoveCommand(moveAdapter));
-            }
-
-            var errorhandler = new ErrorHandler();
-            errorhandler.Setup(
-                typeof(MoveCommand),
-                typeof(NullReferenceException),
-                (ICommand cmd, Exception ex) => queue.Enqueue(new LogCommand(ex, cmd)));
-
-            errorhandler.Setup(
-                typeof(RotateCommand),
-                typeof(DivideByZeroException),
-                (ICommand cmd, Exception ex) => queue.Enqueue(new LogCommand(ex, cmd)));
-
-            object cmd;
-            try
-            {
-                while ((cmd = queue.Dequeue()) != null)
+                return new Hashtable()
                 {
-                    try
-                    {
-                        ((ICommand)cmd).Execute();
-                    }
-                    catch (Exception e)
-                    {
-                        errorhandler.Proccess(e, (ICommand)cmd);
-                    }
-                }
-            }
-            catch (System.InvalidOperationException)
+                    { Thread.CurrentThread.ManagedThreadId, $"thread {Thread.CurrentThread.ManagedThreadId}" }
+                };
+            });
+
+            foreach (DictionaryEntry threadName in ThreadName.Value)
             {
-                return;
+                Console.WriteLine($"{threadName.Key}: {threadName.Value}");
             }
+
+
+            // Action that prints out ThreadName for the current thread
+            Action action = () =>
+            {
+                // If ThreadName.IsValueCreated is true, it means that we are not the
+                // first action to run on this thread.
+                bool repeat = ThreadName.IsValueCreated;
+
+                Console.WriteLine("ThreadName = {0} {1}", Thread.CurrentThread.ManagedThreadId, repeat ? "(repeat)" : "");
+            };
+
+            // Launch eight of them.  On 4 cores or less, you should see some repeat ThreadNames
+            Parallel.Invoke(action, action, action);
+
+            foreach (DictionaryEntry threadName in ThreadName.Value)
+            {
+                Console.WriteLine($"{threadName.Key}: {threadName.Value}");
+            }
+
+            // Dispose when you are done
+            ThreadName.Dispose();
         }
     }
 }
