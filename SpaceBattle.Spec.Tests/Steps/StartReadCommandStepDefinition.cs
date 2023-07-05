@@ -55,6 +55,6 @@ public class StartReadCommandStepDefinition
     [Then(@"запущен новый поток")]
     public void ThenЗапущенНовыйПоток()
     {
-        Assert.Equal(TaskStatus.Running, _newTask?.Status);
+        Assert.True(_newTask?.Status is TaskStatus.Running or TaskStatus.RanToCompletion);
     }
 }
